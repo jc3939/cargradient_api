@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
+
 
 # Application definition
 
@@ -37,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'car_research_api',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +82,12 @@ WSGI_APPLICATION = 'cargradient_api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'carstudio_db',
+        'USER': 'carstudio_admin@carstudio-data',
+        'PASSWORD': '!mysearchengine1',
+        'HOST': 'carstudio-data.postgres.database.azure.com',
+        'PORT': '5432',
     }
 }
 

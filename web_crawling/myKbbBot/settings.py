@@ -12,12 +12,21 @@ BOT_NAME = 'myKbbBot'
 SPIDER_MODULES = ['myKbbBot.spiders']
 NEWSPIDER_MODULE = 'myKbbBot.spiders'
 
+SPIDER_MIDDLEWARES = {
+    'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
+}
+
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy_splash.SplashCookiesMiddleware': 723,
+    'scrapy_splash.SplashMiddleware': 725,
+    'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
+}
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'myKbbBot (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -86,3 +95,8 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+SPLASH_URL = 'http://0.0.0.0:8050'
+DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
+
+HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'

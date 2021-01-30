@@ -5,6 +5,8 @@ import logging
 
 from scrapy import Spider, Request
 from myKbbBot.items import MykbbbotItem
+from scrapy.shell import inspect_response as debug
+
 
 logger = logging.getLogger()
 
@@ -33,7 +35,10 @@ class CarSpecsSpider(Spider):
 
         vehicleId = response.request.url.split('=')[1]
 
+        debug(response, self)
+
         page_source = response.xpath('//*[contains(text(),"window.__ERROR_PAGE__ = false;window.__APOLLO_STATE__")]').extract()[0]
+
 
         specs_data = json.loads(re.findall('\{.*\}',page_source)[0])
 
