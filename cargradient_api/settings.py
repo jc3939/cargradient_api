@@ -25,7 +25,7 @@ SECRET_KEY = 'cdqfy0f^4$*xh$q$7pm9r@6r0ng0icp5^%6ve&j%rueh-)elgf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
