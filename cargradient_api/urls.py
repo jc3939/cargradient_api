@@ -21,6 +21,7 @@ from car_research_api import views
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'car-specs',views.CarSpecsViewSet,'carspecs')
+router.register(r'car-makers',views.CarMakersViewSet,'carmakers')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

@@ -1,9 +1,9 @@
 from django.contrib.auth import get_user_model
 from rest_framework import viewsets
 from rest_framework import permissions
-from car_research_api.serializers import UserSerializer, CarSpecsSerializer
+from car_research_api.serializers import UserSerializer, CarSpecsSerializer, CarMakersSerializer
 
-from car_research_api.models import CarSpecsModel
+from car_research_api.models import CarSpecsModel, CarMakersModel
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -38,3 +38,15 @@ class CarSpecsViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(BasicSpec_Year = car_year)
         return queryset
 
+class CarMakersViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows car specs to be viewed or edited.
+    """
+    serializer_class = CarMakersSerializer
+    permission_classes = [permissions.AllowAny]
+    def get_queryset(self):
+        queryset = CarMakersModel.objects.all()
+        car_make = self.request.query_params.get('car_make', None)
+        if car_make is not None:
+            queryset = queryset.filter(BasicSpec_Make = car_make)
+        return queryset

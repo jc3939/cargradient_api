@@ -215,4 +215,11 @@ class CarSpecsModel(models.Model):
     Safety_SurroundViewCamera = models.CharField(max_length=50, default='') 
     Seating_ThridRowSeats = models.CharField(max_length=50, default='') 
     Seating_TopViewCamera = models.CharField(max_length=50, default='') 
-    EngineandDrivetrain_TurningDiameter = models.CharField(max_length=50, default='') 
+    EngineandDrivetrain_TurningDiameter = models.CharField(max_length=50, default='')
+
+class CarMakersModel(models.Model):
+
+    def __str__(self):
+        return self.BasicSpec_Make
+        
+    BasicSpec_Make = models.CharField(max_length=50, default='') 
