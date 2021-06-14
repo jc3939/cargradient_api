@@ -222,4 +222,25 @@ class CarMakersModel(models.Model):
     def __str__(self):
         return self.BasicSpec_Make
         
-    BasicSpec_Make = models.CharField(max_length=50, default='') 
+    BasicSpec_Make = models.CharField(max_length=50, default='')
+
+
+class CarListingsModel(models.Model):
+
+    def __str__(self):
+        return self.Title
+        
+    Title = models.CharField(max_length=200, default='')
+    Odometer = models.CharField(max_length=20, default='')
+    FuelEconomy = models.CharField(max_length=50, default='')
+    ExteriorColor = models.CharField(max_length=50, default='')
+    InteriorColor = models.CharField(max_length=50, default='')
+    BodySeating = models.CharField(max_length=50, default='')
+    Transmission = models.CharField(max_length=50, default='')
+    DriveTrain = models.CharField(max_length=100, default='')
+    Engine = models.CharField(max_length=50, default='')
+    HighlightedFeatures = models.JSONField(null=True)
+    DetailedSpecs = models.JSONField(null=True)
+    Price = models.CharField(max_length=10)
+    Condition = models.CharField(max_length=10)
+    DealerName = models.CharField(max_length=20)
