@@ -243,4 +243,10 @@ class CarListingsSerializer(serializers.HyperlinkedModelSerializer):
                 'DetailedSpecs',
                 'Price',
                 'Condition',
-                'DealerName',]
+                'DealerName',
+                'CarMakers',
+                'CarModels',
+                'CarTrims',
+                'CarYears',
+                'ZipCode',
+                'BodyStyle']
