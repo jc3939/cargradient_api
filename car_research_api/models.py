@@ -250,3 +250,10 @@ class CarListingsModel(models.Model):
     CarYears = models.CharField(max_length=50)
     ZipCode = models.CharField(max_length=50)
     BodyStyle = models.CharField(max_length=25, default='')
+
+class CarModelsModel(models.Model):
+
+    def __str__(self):
+        return self.CarModels
+        
+    CarModels = models.CharField(max_length=50, default='')

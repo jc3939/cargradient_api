@@ -23,6 +23,7 @@ router.register(r'users', views.UserViewSet)
 router.register(r'car-specs',views.CarSpecsViewSet,'carspecs')
 router.register(r'car-makers',views.CarMakersViewSet,'carmakers')
 router.register(r'car-listings',views.CarListingsViewSet,'carlistings')
+router.register(r'car-models',views.CarModelsViewSet,'carmodels')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

@@ -60,3 +60,13 @@ class CarListingsViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = CarListingsModel.objects.all()
         return queryset
+
+class CarModelsViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows car specs to be viewed or edited.
+    """
+    serializer_class = CarModelsSerializer
+    permission_classes = [permissions.AllowAny]
+    def get_queryset(self):
+        queryset = CarModelsModel.objects.all()
+        return queryset

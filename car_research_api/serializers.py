@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from car_research_api.models import CarSpecsModel, CarMakersModel, CarListingsModel
+from car_research_api.models import CarSpecsModel, CarMakersModel, CarListingsModel, CarModelsModel
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -250,3 +250,8 @@ class CarListingsSerializer(serializers.HyperlinkedModelSerializer):
                 'CarYears',
                 'ZipCode',
                 'BodyStyle']
+
+class CarModelsSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = CarModelsModel
+        fields = ['CarModels']
