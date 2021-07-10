@@ -216,6 +216,7 @@ class CarSpecsModel(models.Model):
     Seating_ThridRowSeats = models.CharField(max_length=50, default='') 
     Seating_TopViewCamera = models.CharField(max_length=50, default='') 
     EngineandDrivetrain_TurningDiameter = models.CharField(max_length=50, default='')
+    CarPictures = models.TextField()
 
 class CarMakersModel(models.Model):
 

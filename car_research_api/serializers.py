@@ -220,7 +220,8 @@ class CarSpecsSerializer(serializers.HyperlinkedModelSerializer):
                 'Safety_SurroundViewCamera',
                 'Seating_ThridRowSeats',
                 'Seating_TopViewCamera',
-                'EngineandDrivetrain_TurningDiameter',]
+                'EngineandDrivetrain_TurningDiameter',
+                'CarPictures',]
 
 class CarMakersSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
