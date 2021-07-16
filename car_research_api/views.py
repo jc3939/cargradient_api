@@ -59,6 +59,30 @@ class CarListingsViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny]
     def get_queryset(self):
         queryset = CarListingsModel.objects.all()
+        condition = self.request.query_params.get('condition', None)
+        car_make = self.request.query_params.get('car_make', None)
+        car_model = self.request.query_params.get('car_model', None)
+        car_trim = self.request.query_params.get('car_trim', None)
+        car_year = self.request.query_params.get('car_year', None)
+        user_location = self.request.query_params.get('user_location', None)
+        body_type = self.request.query_params.get('body_type', None)
+        car_size = self.request.query_params.get('car_size', None)
+        car_pricing_tier = self.request.query_params.get('car_pricing_tier', None)
+
+        if car_make is not None:
+            queryset = queryset.filter(CarMakers = car_make)
+        if car_model is not None:
+            queryset = queryset.filter(CarModels = car_model)
+        if car_trim is not None:
+            queryset = queryset.filter(CarTrims = car_trim)
+        if car_year is not None:
+            queryset = queryset.filter(CarYears = car_year)
+        if condition is not None:
+            queryset = queryset.filter(Condition = condition)
+        if user_location is not None:
+            queryset = queryset.filter(ZipCode = user_location)
+        if body_type is not None:
+            queryset = queryset.filter(BodyStyle = body_type)
         return queryset
 
 class CarModelsViewSet(viewsets.ModelViewSet):
