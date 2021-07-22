@@ -101,4 +101,42 @@ class CarModelsViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny]
     def get_queryset(self):
         queryset = CarModelsModel.objects.all()
+        car_maker = self.request.query_params.get('car_make', None)
+        if car_maker is not None:
+            queryset = queryset.filter(BasicSpec_Make = car_maker)
+        return queryset
+
+class CarYearsViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows car specs to be viewed or edited.
+    """
+    serializer_class = CarYearsSerializer
+    permission_classes = [permissions.AllowAny]
+    def get_queryset(self):
+        queryset = CarYearsModel.objects.all()
+        car_make = self.request.query_params.get('car_make', None)
+        car_model = self.request.query_params.get('car_model', None)
+        if car_make is not None:
+            queryset = queryset.filter(BasicSpec_Make = car_make)
+        if car_model is not None:
+            queryset = queryset.filter(BasicSpec_Model = car_model)
+        return queryset
+
+class CarTrimsViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows car specs to be viewed or edited.
+    """
+    serializer_class = CarTrimsSerializer
+    permission_classes = [permissions.AllowAny]
+    def get_queryset(self):
+        queryset = CarTrimsModel.objects.all()
+        car_make = self.request.query_params.get('car_make', None)
+        car_model = self.request.query_params.get('car_model', None)
+        car_year = self.request.query_params.get('car_year', None)
+        if car_make is not None:
+            queryset = queryset.filter(BasicSpec_Make = car_make)
+        if car_model is not None:
+            queryset = queryset.filter(BasicSpec_Model = car_model)
+        if car_year is not None:
+            queryset = queryset.filter(BasicSpec_Year = car_year)
         return queryset

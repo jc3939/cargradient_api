@@ -255,6 +255,27 @@ class CarListingsModel(models.Model):
 class CarModelsModel(models.Model):
 
     def __str__(self):
-        return self.CarModels
+        return '-'.join([self.BasicSpec_Make, self.BasicSpec_Model])
         
-    CarModels = models.CharField(max_length=50, default='')
+    BasicSpec_Make = models.CharField(max_length=50, default='') 
+    BasicSpec_Model = models.CharField(max_length=50, default='') 
+
+class CarYearsModel(models.Model):
+
+    def __str__(self):
+        return '-'.join([self.BasicSpec_Year, self.BasicSpec_Make, self.BasicSpec_Model])
+
+    BasicSpec_Year = models.CharField(max_length=50, default='') 
+    BasicSpec_Make = models.CharField(max_length=50, default='') 
+    BasicSpec_Model = models.CharField(max_length=50, default='') 
+
+class CarTrimsModel(models.Model):
+
+    def __str__(self):
+        return '-'.join([self.BasicSpec_Year, self.BasicSpec_Make, self.BasicSpec_Model, self.BasicSpec_Trim])
+        
+    BasicSpec_Year = models.CharField(max_length=50, default='') 
+    BasicSpec_Make = models.CharField(max_length=50, default='') 
+    BasicSpec_Model = models.CharField(max_length=50, default='') 
+    BasicSpec_Trim = models.CharField(max_length=50, default='') 
+
