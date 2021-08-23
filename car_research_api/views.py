@@ -62,34 +62,54 @@ class CarListingsViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         zcdb = ZipCodeDatabase()
         queryset = CarListingsModel.objects.all()
-        condition = self.request.query_params.get('condition', None)
-        car_make = self.request.query_params.get('car_make', None)
-        car_model = self.request.query_params.get('car_model', None)
-        car_trim = self.request.query_params.get('car_trim', None)
-        car_year = self.request.query_params.get('car_year', None)
+        Condition = self.request.query_params.get('Condition', None)
+        car_make = self.request.query_params.get('CarMakers', None)
+        car_model = self.request.query_params.get('CarModels', None)
+        car_trim = self.request.query_params.get('CarTrims', None)
+        car_year = self.request.query_params.get('CarYears', None)
+        car_year_start = self.request.query_params.get('car_year_start', None)
+        car_year_end = self.request.query_params.get('car_year_end', None)
         user_location = self.request.query_params.get('user_location', '98052')
-        body_type = self.request.query_params.get('body_type', None)
+        BodyStyle = self.request.query_params.get('BodyStyle', None)
         car_size = self.request.query_params.get('car_size', None)
         car_pricing_tier = self.request.query_params.get('car_pricing_tier', None)
         radius = self.request.query_params.get('radius', 50)
+        DriveTrain = self.request.query_params.get('DriveTrain', None)
+        starting_price = self.request.query_params.get('starting_price', None)
+        ending_price = self.request.query_params.get('ending_price', None)
+        starting_mileage = self.request.query_params.get('starting_mileage', None)
+        ending_mileage = self.request.query_params.get('ending_mileage', None)
 
         in_radius = [z.zip for z in zcdb.get_zipcodes_around_radius(user_location, radius)]
 
-
-        if car_make is not None:
+        if car_make:
             queryset = queryset.filter(CarMakers = car_make)
-        if car_model is not None:
+        if car_year_start:
+            queryset = queryset.filter(CarYears__gte = car_year_start)
+        if car_year_end:
+            queryset = queryset.filter(CarYears__lte = car_year_end)
+        if car_year_end:
+            queryset = queryset.filter(Odometer__gte = starting_mileage)
+        if ending_mileage:
+            queryset = queryset.filter(Odometer__lte = ending_mileage)
+        if car_model:
             queryset = queryset.filter(CarModels = car_model)
-        if car_trim is not None:
+        if car_trim:
             queryset = queryset.filter(CarTrims = car_trim)
-        if car_year is not None:
+        if car_year:
             queryset = queryset.filter(CarYears = car_year)
-        if condition is not None:
-            queryset = queryset.filter(Condition = condition)
-        if body_type is not None:
-            queryset = queryset.filter(BodyStyle = body_type)
-
-        queryset = queryset.filter(ZipCode__in = in_radius)
+        if BodyStyle:
+            queryset = queryset.filter(BodyStyle = BodyStyle)
+        if in_radius:
+            queryset = queryset.filter(ZipCode__in = in_radius)
+        if starting_price:
+            queryset = queryset.filter(Price__gte = starting_price)
+        if ending_price:
+            queryset = queryset.filter(Price__lte = ending_price)
+        if DriveTrain:
+            queryset = queryset.filter(DriveTrain = DriveTrain)
+        if Condition:
+            queryset = queryset.filter(Condition = Condition)
 
         return queryset
 
