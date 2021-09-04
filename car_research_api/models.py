@@ -251,6 +251,7 @@ class CarListingsModel(models.Model):
     CarYears = models.CharField(max_length=50)
     ZipCode = models.CharField(max_length=50)
     BodyStyle = models.CharField(max_length=25, default='')
+    ImageUrls = models.JSONField(null=True)
 
 class CarModelsModel(models.Model):
 

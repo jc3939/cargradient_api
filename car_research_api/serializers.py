@@ -250,7 +250,8 @@ class CarListingsSerializer(serializers.HyperlinkedModelSerializer):
                 'CarTrims',
                 'CarYears',
                 'ZipCode',
-                'BodyStyle']
+                'BodyStyle',
+                'ImageUrls']
 
 class CarModelsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

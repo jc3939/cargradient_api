@@ -60,11 +60,11 @@ class Command(BaseCommand):
             row["BodyStyle"] = row['BodySeating'].split('/')[0]
         except AttributeError:
             row["BodyStyle"] = ""
+        row['ImageUrls'] = row['image_urls']
         return row
 
     def handle(self, *args, **options):
-        car_listings_df = self.car_listings_df.apply(self.create_and_mapping_features, axis=1).drop(['_id','Fuel Economy', 'Exterior Color','Interior Color','Body/Seating','Drivetrain','highlighted_features','detailed_specifications','MSRP','Dealer','Body'],axis=1).to_dict('records')
-
+        car_listings_df = self.car_listings_df.apply(self.create_and_mapping_features, axis=1).drop(['_id','Fuel Economy', 'Exterior Color','Interior Color','Body/Seating','Drivetrain','highlighted_features','detailed_specifications','MSRP','Dealer','Body','image_urls'],axis=1).to_dict('records')
         size_of_data = len(car_listings_df)
         k = 10
         i = 0
