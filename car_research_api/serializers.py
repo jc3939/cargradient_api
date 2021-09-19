@@ -233,6 +233,7 @@ class CarListingsSerializer(serializers.HyperlinkedModelSerializer):
         model = CarListingsModel
         fields = ['Title',
                 'Odometer',
+                'FuelType',
                 'FuelEconomy',
                 'ExteriorColor',
                 'InteriorColor',

@@ -234,6 +234,7 @@ class CarListingsModel(models.Model):
     Title = models.CharField(max_length=200, default='')
     Odometer = models.IntegerField(default=0)
     FuelEconomy = models.CharField(max_length=50, default='')
+    FuelType = models.CharField(max_length=20, default='')
     ExteriorColor = models.CharField(max_length=50, default='')
     InteriorColor = models.CharField(max_length=50, default='')
     BodySeating = models.CharField(max_length=50, default='')
