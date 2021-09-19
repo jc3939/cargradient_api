@@ -232,7 +232,7 @@ class CarListingsModel(models.Model):
         return self.Title
         
     Title = models.CharField(max_length=200, default='')
-    Odometer = models.CharField(max_length=20, default='')
+    Odometer = models.IntegerField(default=0)
     FuelEconomy = models.CharField(max_length=50, default='')
     ExteriorColor = models.CharField(max_length=50, default='')
     InteriorColor = models.CharField(max_length=50, default='')
@@ -242,7 +242,7 @@ class CarListingsModel(models.Model):
     Engine = models.CharField(max_length=50, default='')
     HighlightedFeatures = models.JSONField(null=True)
     DetailedSpecs = models.JSONField(null=True)
-    Price = models.CharField(max_length=10)
+    Price = models.IntegerField(default=0)
     Condition = models.CharField(max_length=10)
     DealerName = models.CharField(max_length=20)
     CarMakers = models.CharField(max_length=20)
