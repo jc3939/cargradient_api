@@ -137,6 +137,19 @@ class CarModelsViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(BasicSpec_Make = car_maker)
         return queryset
 
+class CarModelsListingViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows car specs to be viewed or edited.
+    """
+    serializer_class = CarModelsListingsSerializer
+    permission_classes = [permissions.AllowAny]
+    def get_queryset(self):
+        queryset = CarModelsListings.objects.all()
+        car_maker = self.request.query_params.get('car_make', None)
+        if car_maker is not None:
+            queryset = queryset.filter(BasicSpec_Make = car_maker)
+        return queryset
+
 class CarYearsViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows car specs to be viewed or edited.

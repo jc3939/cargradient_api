@@ -281,3 +281,12 @@ class CarTrimsModel(models.Model):
     BasicSpec_Model = models.CharField(max_length=50, default='') 
     BasicSpec_Trim = models.CharField(max_length=50, default='') 
 
+class CarModelsListings(models.Model):
+
+    def __str__(self):
+        return '-'.join([self.BasicSpec_Year, self.BasicSpec_Make, self.BasicSpec_Model])
+        
+    BasicSpec_Year = models.CharField(max_length=50, default='') 
+    BasicSpec_Make = models.CharField(max_length=50, default='') 
+    BasicSpec_Model = models.CharField(max_length=50, default='') 
+

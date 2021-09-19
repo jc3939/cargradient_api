@@ -260,6 +260,13 @@ class CarModelsSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['BasicSpec_Make',
                   'BasicSpec_Model']
 
+class CarModelsListingsSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = CarModelsListings
+        fields = ['BasicSpec_Year',
+                  'BasicSpec_Make',
+                  'BasicSpec_Model']
+
 class CarMakersSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = CarMakersModel
