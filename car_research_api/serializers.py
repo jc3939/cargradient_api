@@ -231,7 +231,8 @@ class CarMakersSerializer(serializers.HyperlinkedModelSerializer):
 class CarListingsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = CarListingsModel
-        fields = ['Title',
+        fields = ['ListingId',
+                'Title',
                 'Odometer',
                 'FuelType',
                 'FuelEconomy',

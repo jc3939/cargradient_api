@@ -79,6 +79,7 @@ class CarListingsViewSet(viewsets.ModelViewSet):
         ending_price = self.request.query_params.get('ending_price', None)
         starting_mileage = self.request.query_params.get('starting_mileage', None)
         ending_mileage = self.request.query_params.get('ending_mileage', None)
+        listingId = self.request.query_params.get('listingId', None)
 
         car_make_list = []
         car_condition_list = []
@@ -88,6 +89,9 @@ class CarListingsViewSet(viewsets.ModelViewSet):
 
         in_radius = [z.zip for z in zcdb.get_zipcodes_around_radius(user_location, radius)]
 
+        if listingId:
+            listingIds = listingId.split(',')
+            queryset = queryset.filter(ListingId__in = listingIds)
         if car_make:
             car_make_list = car_make.split(',')
             queryset = queryset.filter(CarMakers__in = car_make_list)

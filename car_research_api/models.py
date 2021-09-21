@@ -230,7 +230,7 @@ class CarListingsModel(models.Model):
 
     def __str__(self):
         return self.Title
-        
+    ListingId = models.IntegerField(default=0)
     Title = models.CharField(max_length=200, default='')
     Odometer = models.IntegerField(default=0)
     FuelEconomy = models.CharField(max_length=50, default='')
