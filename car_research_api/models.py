@@ -253,6 +253,9 @@ class CarListingsModel(models.Model):
     ZipCode = models.CharField(max_length=50)
     BodyStyle = models.CharField(max_length=25, default='')
     ImageUrls = models.JSONField(null=True)
+    DetailedAddress = models.CharField(max_length=100, default='')
+    City = models.CharField(max_length=20, default='')
+    State = models.CharField(max_length=5, default='')
 
 class CarModelsModel(models.Model):
 

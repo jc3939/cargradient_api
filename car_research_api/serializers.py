@@ -253,7 +253,10 @@ class CarListingsSerializer(serializers.HyperlinkedModelSerializer):
                 'CarYears',
                 'ZipCode',
                 'BodyStyle',
-                'ImageUrls']
+                'ImageUrls',
+                'DetailedAddress',
+                'City',
+                'State']
 
 class CarModelsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
