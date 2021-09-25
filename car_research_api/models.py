@@ -299,5 +299,7 @@ class ListingInquiryModel(models.Model):
     phone_number = models.CharField(max_length=20, default='')
     inquiry_name = models.CharField(max_length=50, default='')
     message_body = models.CharField(max_length=500, default='')
+    email_subscribed = models.BooleanField(default=False)
+    car_listing_url = models.CharField(max_length=1000, default='')
 
 

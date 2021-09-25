@@ -205,14 +205,23 @@ class ListingInquiryView(generics.GenericAPIView):
         phone_number = request.query_params.get('phone_number', None)
         inquiry_name = request.query_params.get('inquiry_name', None)
         message_body = request.query_params.get('message_body', None)
+        email_subscribed = request.query_params.get('email_subscribed', False)
+        car_listing_url = request.query_params.get('car_listing_url', None)
         if re.fullmatch(regex, email_address):
             send_mail(
                 subject = 'Sent email from {}'.format(inquiry_name),
-                message = 'Here is the message. {}'.format(message_body),
+                message = f'Hello,\n{inquiry_name} has shown interest in your car listing {car_listing_url}.\nHis/her phone number is {phone_number} and email {email_address}.\nBelow is his/her message:\n{message_body}\nCargradient Team',
                 from_email = 'jianchtest@gmail.com',
                 recipient_list = [email_address],
                 fail_silently=False,
             )
+            inquiry_model = ListingInquiryModel(email_address = email_address,\
+                                     phone_number = phone_number,\
+                                     inquiry_name = inquiry_name,\
+                                     message_body = message_body,\
+                                     email_subscribed = email_subscribed,\
+                                     car_listing_url = car_listing_url)
+            inquiry_model.save()
             return Response({"success": "Sent"})
         else:
             return Response({'success': "Failed"}, status=status.HTTP_400_BAD_REQUEST)

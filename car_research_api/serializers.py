@@ -295,7 +295,4 @@ class CarTrimsSerializer(serializers.HyperlinkedModelSerializer):
 class ListingInquirySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ListingInquiryModel
-        fields = ['email_address',
-                  'phone_number',
-                  'inquiry_name',
-                  'message_body']
+        fields = '__all__'
