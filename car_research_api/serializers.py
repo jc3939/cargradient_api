@@ -290,3 +290,12 @@ class CarTrimsSerializer(serializers.HyperlinkedModelSerializer):
                   'BasicSpec_Make',
                   'BasicSpec_Model',
                   'BasicSpec_Trim']
+
+
+class ListingInquirySerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = ListingInquiryModel
+        fields = ['email_address',
+                  'phone_number',
+                  'inquiry_name',
+                  'message_body']

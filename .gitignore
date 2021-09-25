@@ -2,5 +2,6 @@
 .vscode/
 *.sqlite3
 env/
+.env
 *.csv
 __pycache__/

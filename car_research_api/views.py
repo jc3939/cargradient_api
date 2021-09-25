@@ -2,6 +2,13 @@ from django.contrib.auth import get_user_model
 from django.db.models import query
 from rest_framework import viewsets
 from rest_framework import permissions
+from django.core.mail import send_mail
+from rest_framework import serializers, status, views
+from rest_framework import generics
+from rest_framework.response import Response
+import os
+import re
+
 from pyzipcode import ZipCodeDatabase
 
 from car_research_api.serializers import *
@@ -188,3 +195,26 @@ class CarTrimsViewSet(viewsets.ModelViewSet):
         if car_year is not None:
             queryset = queryset.filter(BasicSpec_Year = car_year)
         return queryset
+
+class ListingInquiryView(generics.GenericAPIView):
+    permission_classes = [permissions.AllowAny]
+    def get(self, request):
+        regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+        
+        email_address = request.query_params.get('email_address', None)
+        phone_number = request.query_params.get('phone_number', None)
+        inquiry_name = request.query_params.get('inquiry_name', None)
+        message_body = request.query_params.get('message_body', None)
+        if re.fullmatch(regex, email_address):
+            send_mail(
+                subject = 'Sent email from {}'.format(inquiry_name),
+                message = 'Here is the message. {}'.format(message_body),
+                from_email = 'jianchtest@gmail.com',
+                recipient_list = [email_address],
+                fail_silently=False,
+            )
+            return Response({"success": "Sent"})
+        else:
+            return Response({'success': "Failed"}, status=status.HTTP_400_BAD_REQUEST)
+
+        

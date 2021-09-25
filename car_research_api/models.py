@@ -293,3 +293,11 @@ class CarModelsListings(models.Model):
     BasicSpec_Make = models.CharField(max_length=50, default='') 
     BasicSpec_Model = models.CharField(max_length=50, default='') 
 
+class ListingInquiryModel(models.Model):
+
+    email_address = models.CharField(max_length=50, default='')
+    phone_number = models.CharField(max_length=20, default='')
+    inquiry_name = models.CharField(max_length=50, default='')
+    message_body = models.CharField(max_length=500, default='')
+
+
