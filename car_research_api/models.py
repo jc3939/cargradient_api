@@ -9,7 +9,7 @@ class CarSpecsModel(models.Model):
     BasicSpec_Year = models.CharField(max_length=50, default='') 
     BasicSpec_Make = models.CharField(max_length=50, default='') 
     BasicSpec_Model = models.CharField(max_length=50, default='') 
-    BasicSpec_Trim = models.CharField(max_length=50, default='') 
+    BasicSpec_Trim = models.CharField(max_length=200, default='') 
     BasicSpec_FuelType = models.CharField(max_length=50, default='') 
     BasicSpec_Transmission = models.CharField(max_length=50, default='') 
     EngineandDrivetrain_AirIntakeType = models.CharField(max_length=50, default='') 
@@ -216,7 +216,7 @@ class CarSpecsModel(models.Model):
     Seating_ThridRowSeats = models.CharField(max_length=50, default='') 
     Seating_TopViewCamera = models.CharField(max_length=50, default='') 
     EngineandDrivetrain_TurningDiameter = models.CharField(max_length=50, default='')
-    CarPictures = models.TextField()
+    CarPictures = models.CharField(max_length=1000, default='')
 
 class CarMakersModel(models.Model):
 
