@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'car_research_api',
+    'car_research',
 ]
 
 MIDDLEWARE = [
